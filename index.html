@@ -48,6 +48,7 @@
                     <a href="#inspiration" class="nav-link hover:text-brand transition">השראה</a>
                     <a href="#contact" class="nav-link hover:text-brand transition">צרו קשר</a>
                     <a href="#volunteer" class="nav-link bg-brand text-white px-4 py-2 rounded-full hover:bg-brand-dark transition">הצטרפו!</a>
+                    <a href="admin.html" class="nav-link text-gray-400 hover:text-gray-600 text-xs flex items-center gap-1 border border-gray-200 px-3 py-1.5 rounded-full hover:border-gray-400 transition">🔐 מאמנים</a>
                 </div>
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
@@ -66,6 +67,7 @@
                     <a href="#inspiration" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-100">השראה</a>
                     <a href="#contact" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-100">צרו קשר</a>
                     <a href="#volunteer" class="mobile-nav-link py-2 px-3 rounded-lg bg-brand text-white text-center">הצטרפו!</a>
+                    <a href="admin.html" class="mobile-nav-link py-2 px-3 rounded-lg text-gray-400 text-center border border-gray-200 text-sm">🔐 כניסת מאמנים</a>
                 </div>
             </div>
         </div>
@@ -322,50 +324,70 @@
                 <p class="text-gray-500 text-lg">פעמיים בשבוע, גשם או שמש ☀️</p>
                 <div class="w-24 h-1 bg-brand mx-auto rounded-full mt-4"></div>
             </div>
-            <div class="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <!-- Tuesday -->
-                <div class="bg-gradient-to-br from-wolves-light to-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-14 h-14 bg-wolves rounded-xl flex items-center justify-center text-white text-xl font-black">ג'</div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 text-lg">יום שלישי</h3>
-                            <p class="text-sm text-gray-500">מאמנת: גילת פיש</p>
+            <!-- VS layout -->
+            <div class="relative max-w-2xl mx-auto">
+                <div class="grid sm:grid-cols-2 gap-8">
+                    <!-- Tuesday — Gilat's team -->
+                    <div class="relative group">
+                        <div class="absolute -inset-0.5 bg-gradient-to-br from-orange-400 to-amber-300 rounded-3xl opacity-60 group-hover:opacity-100 transition duration-300 blur-sm"></div>
+                        <div class="relative bg-white rounded-2xl p-6 shadow-md border border-orange-100 overflow-hidden">
+                            <!-- Header strip -->
+                            <div class="absolute top-0 right-0 left-0 h-1.5 bg-gradient-to-l from-amber-300 to-orange-500"></div>
+                            <div class="flex flex-col items-center text-center mb-5 mt-2">
+                                <div class="text-5xl mb-2">🏃‍♀️</div>
+                                <h3 class="text-xl font-black text-gray-900">קבוצת גילת</h3>
+                                <span class="text-sm text-orange-500 font-semibold">יום שלישי</span>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex items-center gap-2 justify-center bg-orange-50 rounded-xl px-3 py-2 font-bold text-gray-700">
+                                    <span>🕐</span> 18:15 — 19:30
+                                </div>
+                                <div class="flex items-center gap-2 justify-center text-gray-600">
+                                    <span>📍</span>
+                                    <a href="https://maps.app.goo.gl/HXUKPxA4SwkJoPUn6" target="_blank" rel="noopener" class="text-brand hover:underline font-medium">כרמיאל — פתחו במפה</a>
+                                </div>
+                                <div class="flex items-center gap-2 justify-center text-gray-500 text-xs">
+                                    <span>🌈</span> כל הרמות — כולם מוזמנים
+                                </div>
+                            </div>
+                            <a href="#volunteer" class="block mt-5 text-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold py-2 rounded-xl transition">
+                                רוצים להצטרף? ←
+                            </a>
                         </div>
                     </div>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex items-center gap-2 text-gray-600">
-                            <span>🕐</span> <strong>18:15 - 19:30</strong>
-                        </div>
-                        <div class="flex items-center gap-2 text-gray-600">
-                            <span>📍</span>
-                            <a href="https://maps.app.goo.gl/HXUKPxA4SwkJoPUn6" target="_blank" rel="noopener" class="text-brand hover:underline font-medium">כרמיאל — פתחו במפה</a>
-                        </div>
-                        <div class="flex items-center gap-2 text-gray-600">
-                            <span>👥</span> כל הרמות
+
+                    <!-- Wednesday — Roee's team -->
+                    <div class="relative group">
+                        <div class="absolute -inset-0.5 bg-gradient-to-br from-brand to-red-400 rounded-3xl opacity-60 group-hover:opacity-100 transition duration-300 blur-sm"></div>
+                        <div class="relative bg-white rounded-2xl p-6 shadow-md border border-red-100 overflow-hidden">
+                            <!-- Header strip -->
+                            <div class="absolute top-0 right-0 left-0 h-1.5 bg-gradient-to-l from-red-400 to-brand"></div>
+                            <div class="flex flex-col items-center text-center mb-5 mt-2">
+                                <div class="text-5xl mb-2">🏃‍♂️</div>
+                                <h3 class="text-xl font-black text-gray-900">קבוצת רועי</h3>
+                                <span class="text-sm text-brand font-semibold">יום רביעי</span>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex items-center gap-2 justify-center bg-red-50 rounded-xl px-3 py-2 font-bold text-gray-700">
+                                    <span>🕐</span> 18:15 — 19:30
+                                </div>
+                                <div class="flex items-center gap-2 justify-center text-gray-600">
+                                    <span>📍</span>
+                                    <a href="https://maps.app.goo.gl/HXUKPxA4SwkJoPUn6" target="_blank" rel="noopener" class="text-brand hover:underline font-medium">כרמיאל — פתחו במפה</a>
+                                </div>
+                                <div class="flex items-center gap-2 justify-center text-gray-500 text-xs">
+                                    <span>🌈</span> כל הרמות — כולם מוזמנים
+                                </div>
+                            </div>
+                            <a href="#volunteer" class="block mt-5 text-center bg-brand hover:bg-brand-dark text-white text-sm font-bold py-2 rounded-xl transition">
+                                רוצים להצטרף? ←
+                            </a>
                         </div>
                     </div>
                 </div>
-                <!-- Wednesday -->
-                <div class="bg-gradient-to-br from-dolphins-light to-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-14 h-14 bg-dolphins rounded-xl flex items-center justify-center text-white text-xl font-black">ד'</div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 text-lg">יום רביעי</h3>
-                            <p class="text-sm text-gray-500">מאמן: רועי להב</p>
-                        </div>
-                    </div>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex items-center gap-2 text-gray-600">
-                            <span>🕐</span> <strong>18:15 - 19:30</strong>
-                        </div>
-                        <div class="flex items-center gap-2 text-gray-600">
-                            <span>📍</span>
-                            <a href="https://maps.app.goo.gl/HXUKPxA4SwkJoPUn6" target="_blank" rel="noopener" class="text-brand hover:underline font-medium">כרמיאל — פתחו במפה</a>
-                        </div>
-                        <div class="flex items-center gap-2 text-gray-600">
-                            <span>👥</span> כל הרמות
-                        </div>
-                    </div>
+                <!-- VS badge -->
+                <div class="hidden sm:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-gray-900 text-white text-xs font-black rounded-full items-center justify-center shadow-lg border-2 border-white">
+                    VS
                 </div>
             </div>
         </div>
