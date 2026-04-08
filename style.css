@@ -177,3 +177,43 @@ footer a[aria-label] {
     nav, footer, #volunteer, .animate-scroll { display: none; }
     section { break-inside: avoid; }
 }
+
+/* ── Accessibility ─────────────────────────────────────── */
+
+/* Visible focus indicator for all interactive elements */
+:focus-visible {
+    outline: 3px solid #F97316;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Respect user preference to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .animate-scroll {
+        animation: none;
+        /* Show all images statically instead of scrolling */
+        flex-wrap: wrap;
+    }
+
+    .animate-bounce,
+    .animate-pulse {
+        animation: none;
+    }
+
+    .fade-up,
+    .fade-right,
+    .fade-left,
+    .scale-in {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

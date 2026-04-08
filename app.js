@@ -20,8 +20,11 @@ function initMobileMenu() {
     if (!btn || !menu) return;
 
     btn.addEventListener('click', () => {
+        const isOpen = !menu.classList.contains('hidden');
         menu.classList.toggle('hidden');
         menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        btn.setAttribute('aria-label', isOpen ? 'פתח תפריט ניווט' : 'סגור תפריט ניווט');
     });
 
     // Close menu on link click
@@ -29,6 +32,8 @@ function initMobileMenu() {
         link.addEventListener('click', () => {
             menu.classList.add('hidden');
             menu.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'פתח תפריט ניווט');
         });
     });
 }
@@ -290,6 +295,7 @@ function initTestimonialsCarousel() {
             d.classList.toggle('bg-gray-300', i !== index);
             d.classList.toggle('w-6', i === index);
             d.classList.toggle('w-3', i !== index);
+            d.setAttribute('aria-pressed', i === index ? 'true' : 'false');
         });
     }
 
