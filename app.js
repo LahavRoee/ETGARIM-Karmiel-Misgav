@@ -166,41 +166,45 @@ function showDefaultStories(container) {
 
 function renderStories(container, stories) {
     container.innerHTML = stories.map(story => `
-        <div class="story-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+        <div class="story-card group relative rounded-3xl overflow-hidden cursor-pointer"
+             style="aspect-ratio:4/3">
             ${story.image ? `
-                <div class="aspect-video overflow-hidden">
-                    <img src="${story.image}" alt="${story.title}"
-                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                </div>
+                <img src="${story.image}" alt=""
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                     style="image-orientation:from-image">
             ` : ''}
             ${story.embedUrl ? `
-                <div class="aspect-video">
-                    <iframe src="${story.embedUrl}" class="w-full h-full border-0" allowfullscreen loading="lazy"></iframe>
-                </div>
+                <iframe src="${story.embedUrl}" class="absolute inset-0 w-full h-full border-0" allowfullscreen loading="lazy"></iframe>
             ` : ''}
-            <div class="p-5">
-                <div class="text-xs text-gray-400 mb-2">${formatDate(story.date)}</div>
-                <h3 class="font-bold text-gray-900 text-lg mb-2">${story.title}</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">${story.text}</p>
+            <!-- Gradient overlay — always visible at bottom, full on hover -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent
+                        transition-opacity duration-500 opacity-70 group-hover:opacity-100"></div>
+            <!-- Text slides up on hover -->
+            <div class="absolute inset-x-0 bottom-0 p-5 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                <p class="text-white text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mb-2">
+                    ${story.text}
+                </p>
                 ${story.link ? `
                     <a href="${story.link}" target="_blank" rel="noopener"
-                       class="inline-flex items-center gap-1 text-brand text-sm font-medium mt-3 hover:underline">
-                        קראו עוד &larr;
+                       class="inline-flex items-center gap-1 text-orange-300 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150 hover:underline">
+                        קראו עוד ←
                     </a>
                 ` : ''}
             </div>
+            <!-- Orange dot indicator -->
+            <div class="absolute top-4 left-4 w-2.5 h-2.5 rounded-full bg-brand opacity-80"></div>
         </div>
     `).join('');
 
-    // Animate story cards
+    // Staggered entrance animation
     container.querySelectorAll('.story-card').forEach((card, i) => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
+        card.style.transform = 'translateY(24px)';
         setTimeout(() => {
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
-        }, 200 + i * 150);
+        }, 150 + i * 120);
     });
 }
 
