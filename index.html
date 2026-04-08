@@ -113,7 +113,7 @@
             <!-- Stats -->
             <div class="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
                 <div>
-                    <div class="text-3xl font-black text-orange-400">25+</div>
+                    <div class="text-3xl font-black text-orange-400">40</div>
                     <div class="text-sm text-white/70">מתאמנים</div>
                 </div>
                 <div>
@@ -578,89 +578,82 @@
 
     <!-- Volunteer Section -->
     <section id="volunteer" class="py-20 px-4 bg-white">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-12">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-10">
                 <h2 class="text-4xl font-black text-gray-900 mb-4">רוצים להתנדב? 💪</h2>
                 <p class="text-gray-500 text-lg">הצטרפו למשפחת המתנדבים שלנו — בואו לרוץ עם מישהו מדהים</p>
                 <div class="w-24 h-1 bg-brand mx-auto rounded-full mt-4"></div>
             </div>
-            <form id="volunteer-form" class="bg-orange-50 rounded-3xl p-8 shadow-sm border border-orange-100">
-                <!-- Row 1: First name + Last name -->
-                <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">שם פרטי *</label>
-                        <input type="text" name="firstName" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white" placeholder="שם פרטי">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">שם משפחה *</label>
-                        <input type="text" name="lastName" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white" placeholder="שם משפחה">
-                    </div>
+
+            <!-- WhatsApp primary CTAs -->
+            <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-8 border border-orange-100 shadow-sm">
+                <p class="text-center text-gray-600 text-sm mb-6 leading-relaxed">
+                    הדרך הכי מהירה — שלחו הודעה ישירות למאמנים שלנו בוואצאפ 👇
+                </p>
+                <div class="grid sm:grid-cols-3 gap-3 mb-6">
+                    <a href="https://wa.me/972523818575?text=היי%20רועי%2C%20אני%20מעוניין%2Fת%20להתנדב%20באתגרים%20כרמיאל-משגב%20%F0%9F%A7%A1"
+                       target="_blank" rel="noopener"
+                       class="flex flex-col items-center gap-2 bg-white hover:bg-green-50 border-2 border-gray-100 hover:border-green-400 text-gray-700 px-4 py-4 rounded-2xl font-medium transition-all hover:-translate-y-0.5 hover:shadow-md group">
+                        <span class="text-3xl">🏃‍♂️</span>
+                        <span class="font-bold text-gray-800">רועי</span>
+                        <span class="text-xs text-gray-400">מאמן יום רביעי</span>
+                        <span class="text-xs text-green-500 font-semibold group-hover:text-green-600">💬 שלחו הודעה</span>
+                    </a>
+                    <a href="https://wa.me/972542277191?text=היי%20גילת%2C%20אני%20מעוניין%2Fת%20להתנדב%20באתגרים%20כרמיאל-משגב%20%F0%9F%A7%A1"
+                       target="_blank" rel="noopener"
+                       class="flex flex-col items-center gap-2 bg-white hover:bg-green-50 border-2 border-gray-100 hover:border-green-400 text-gray-700 px-4 py-4 rounded-2xl font-medium transition-all hover:-translate-y-0.5 hover:shadow-md group">
+                        <span class="text-3xl">🏃‍♀️</span>
+                        <span class="font-bold text-gray-800">גילת</span>
+                        <span class="text-xs text-gray-400">מאמנת יום שלישי</span>
+                        <span class="text-xs text-green-500 font-semibold group-hover:text-green-600">💬 שלחו הודעה</span>
+                    </a>
+                    <a href="https://wa.me/972545465178?text=היי%20טליה%2C%20אני%20מעוניין%2Fת%20להתנדב%20באתגרים%20כרמיאל-משגב%20%F0%9F%A7%A1"
+                       target="_blank" rel="noopener"
+                       class="flex flex-col items-center gap-2 bg-white hover:bg-green-50 border-2 border-gray-100 hover:border-green-400 text-gray-700 px-4 py-4 rounded-2xl font-medium transition-all hover:-translate-y-0.5 hover:shadow-md group">
+                        <span class="text-3xl">🤝</span>
+                        <span class="font-bold text-gray-800">טליה</span>
+                        <span class="text-xs text-gray-400">רכזת מתנדבים</span>
+                        <span class="text-xs text-green-500 font-semibold group-hover:text-green-600">💬 שלחו הודעה</span>
+                    </a>
                 </div>
-                <!-- Row 2: Phone + Email -->
-                <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">טלפון *</label>
-                        <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white" placeholder="050-1234567" dir="ltr">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">אימייל</label>
-                        <input type="email" name="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white" placeholder="email@example.com" dir="ltr">
-                    </div>
+                <!-- Optional form toggle -->
+                <div class="text-center">
+                    <button onclick="document.getElementById('optional-form').classList.toggle('hidden')"
+                            class="text-xs text-gray-400 hover:text-brand transition underline underline-offset-2">
+                        מעדיפים להשאיר פרטים בטופס? לחצו כאן
+                    </button>
                 </div>
-                <!-- Row 3: Availability + Experience -->
-                <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">זמינות</label>
-                        <select name="availability" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white">
-                            <option value="">בחרו יום</option>
-                            <option value="שלישי">יום שלישי</option>
-                            <option value="רביעי">יום רביעי</option>
-                            <option value="שניהם">שני הימים</option>
-                            <option value="גמיש">גמיש — כמה ימים</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">ניסיון בריצה/הליכה</label>
-                        <select name="experience" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white">
-                            <option value="">בחרו רמה</option>
-                            <option value="runner">רץ/ת — רגיל/ה לרוץ</option>
-                            <option value="jogger">רץ/ת מזדמן/ת</option>
-                            <option value="walker">הולך/ת ספורטיבי/ת</option>
-                            <option value="beginner">מתחיל/ה — אבל מוטיבציה יש!</option>
-                        </select>
-                    </div>
+                <!-- Collapsed form -->
+                <div id="optional-form" class="hidden mt-6 pt-6 border-t border-orange-100">
+                    <form id="volunteer-form">
+                        <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                            <input type="text" name="firstName" required placeholder="שם פרטי *"
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white text-sm">
+                            <input type="text" name="lastName" required placeholder="שם משפחה *"
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white text-sm">
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                            <input type="tel" name="phone" required placeholder="טלפון *" dir="ltr"
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white text-sm">
+                            <select name="availability" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition bg-white text-sm">
+                                <option value="">זמינות — בחרו יום</option>
+                                <option value="שלישי">יום שלישי</option>
+                                <option value="רביעי">יום רביעי</option>
+                                <option value="שניהם">שני הימים</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white py-3 rounded-xl font-bold transition-all text-sm">
+                            שלחו פרטים 🚀
+                        </button>
+                        <div id="form-success" class="hidden mt-3 p-3 bg-green-50 text-green-700 rounded-xl text-center text-sm font-medium">
+                            🎉 תודה! קיבלנו את הפרטים — ניצור קשר בקרוב.
+                        </div>
+                        <div id="form-error" class="hidden mt-3 p-3 bg-red-50 text-red-700 rounded-xl text-center text-sm">
+                            😕 משהו השתבש. פנו אלינו ישירות בוואצאפ.
+                        </div>
+                    </form>
                 </div>
-                <!-- Notes -->
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">ספרו לנו עליכם</label>
-                    <textarea name="notes" rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition resize-none bg-white" placeholder="למה אתם רוצים להתנדב? יש ניסיון קודם?"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white py-4 rounded-xl font-bold text-lg transition-all hover:shadow-lg active:scale-[0.98]">
-                    שלחו פנייה 🚀
-                </button>
-                <!-- Success message with WhatsApp links -->
-                <div id="form-success" class="hidden mt-4 p-5 bg-green-50 border border-green-200 rounded-2xl">
-                    <p class="text-green-700 font-bold text-center text-lg mb-3">🎉 תודה! קיבלנו את הפנייה שלכם.</p>
-                    <p class="text-green-600 text-sm text-center mb-4">ניצור קשר בקרוב — אפשר גם לפנות ישירות למאמנים:</p>
-                    <div class="flex flex-col sm:flex-row gap-2 justify-center">
-                        <a href="https://wa.me/972523818575" target="_blank" rel="noopener"
-                           class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
-                            💬 רועי (מאמן)
-                        </a>
-                        <a href="https://wa.me/972542277191" target="_blank" rel="noopener"
-                           class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
-                            💬 גילת (מאמנת)
-                        </a>
-                        <a href="https://wa.me/972545465178" target="_blank" rel="noopener"
-                           class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
-                            💬 טליה (רכזת)
-                        </a>
-                    </div>
-                </div>
-                <div id="form-error" class="hidden mt-4 p-4 bg-red-50 text-red-700 rounded-xl text-center font-medium">
-                    😕 משהו השתבש. נסו שוב או צרו קשר ישירות.
-                </div>
-            </form>
+            </div>
         </div>
     </section>
 
