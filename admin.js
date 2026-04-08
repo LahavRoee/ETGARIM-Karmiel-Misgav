@@ -35,26 +35,46 @@ function showDashboard() {
     loadAllData();
 }
 
+// SHA-256 hash using browser SubtleCrypto (for static/GitHub Pages fallback)
+async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+const LOCAL_PW_HASH = '180e7e16333f7904f7dc60367929e9e94cbab98a3fee260fd022d4c29c7aed80';
+
 function initLogin() {
     document.getElementById('login-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const pw = document.getElementById('login-password').value;
+        const errEl = document.getElementById('login-error');
+        errEl.classList.add('hidden');
+
+        // Try server first, fall back to local hash (GitHub Pages / static hosting)
         try {
             const res = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password: pw })
+                body: JSON.stringify({ password: pw }),
+                signal: AbortSignal.timeout(3000)
             });
             const data = await res.json();
             if (data.ok) {
                 authToken = data.token;
                 localStorage.setItem('etgarim_token', authToken);
                 showDashboard();
-            } else {
-                document.getElementById('login-error').classList.remove('hidden');
+                return;
             }
-        } catch {
-            document.getElementById('login-error').classList.remove('hidden');
+        } catch { /* server not available — use local hash */ }
+
+        // Local fallback
+        const hash = await sha256(pw);
+        if (hash === LOCAL_PW_HASH) {
+            authToken = 'local-' + Date.now();
+            localStorage.setItem('etgarim_token', authToken);
+            showDashboard();
+        } else {
+            errEl.classList.remove('hidden');
         }
     });
 }
