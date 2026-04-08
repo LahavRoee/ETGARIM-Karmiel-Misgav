@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNavLink();
     loadStories();
     initVolunteerForm();
+    initTestimonialsCarousel();
 });
 
 // ── Mobile Menu ────────────────────────────────────────────
@@ -142,22 +143,22 @@ async function loadStories() {
 function showDefaultStories(container) {
     const defaults = [
         {
-            title: 'מרוץ בשביל הגיבורות 2025',
-            text: 'הקבוצה שלנו השתתפה במרוץ והוכיחה שכל צעד הוא ניצחון. גאים בכל אחד ואחת!',
-            image: 'images/hands-together.jpeg',
-            date: '2025-02-15'
-        },
-        {
-            title: 'יום מרוץ בכרמיאל',
-            text: 'מרוץ האביב של אתגרים — עשרות רצים ומתנדבים יצאו לדרך ביחד. אנרגיה מטורפת!',
+            title: 'מירוץ תל אביב',
+            text: 'אתגרים כרמיאל-משגב על קו הזינוק בתל אביב — יותר מ-9 שנים שאנחנו רצים יחד בעיר הגדולה. כל שנה מחדש, כל צעד הוא ניצחון.',
             image: 'images/start-line.jpeg',
-            date: '2025-01-20'
+            date: '2026-02-01'
         },
         {
-            title: 'גאווה כתומה',
-            text: 'הקבוצה שלנו עם מדליות לאחר מרוץ מוצלח. כל אחד גיבור בדרך שלו.',
+            title: 'מירוץ בשביל הגיבורות',
+            text: 'הקבוצה שלנו על המסלול — מתאמנים ומתנדבים יחד, כתף אל כתף. רגע שמזכיר לנו למה אנחנו עושים את זה.',
+            image: 'images/hands-together.jpeg',
+            date: '2025-12-01'
+        },
+        {
+            title: 'מירוץ יוצא מן הכלל — כרמיאל',
+            text: 'על המסלול הביתי בכרמיאל — אנרגיה, מדליות וחיוכים. הכתום עולה עולה!',
             image: 'images/medals-group.jpeg',
-            date: '2024-12-10'
+            date: '2024-06-01'
         }
     ];
     renderStories(container, defaults);
@@ -266,4 +267,32 @@ function initVolunteerForm() {
             btn.disabled = false;
         }
     });
+}
+
+// ── Testimonials Carousel ──────────────────────────────────
+function initTestimonialsCarousel() {
+    const track = document.getElementById('testimonials-track');
+    const dots = document.querySelectorAll('#testimonial-dots button');
+    if (!track || !dots.length) return;
+
+    let current = 0;
+    const total = dots.length;
+
+    function goTo(index) {
+        current = index;
+        track.style.transform = `translateX(${index * 100}%)`;
+        dots.forEach((d, i) => {
+            d.classList.toggle('bg-brand', i === index);
+            d.classList.toggle('bg-gray-300', i !== index);
+            d.classList.toggle('w-6', i === index);
+            d.classList.toggle('w-3', i !== index);
+        });
+    }
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => goTo(+dot.dataset.slide));
+    });
+
+    // Auto-advance every 4 seconds
+    setInterval(() => goTo((current + 1) % total), 4000);
 }
