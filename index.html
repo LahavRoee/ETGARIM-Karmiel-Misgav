@@ -33,7 +33,7 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:right-4 focus:z-[100] focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:shadow-lg">דלג לתוכן הראשי</a>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 right-0 left-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
+    <nav id="navbar" aria-label="ניווט ראשי" class="fixed top-0 right-0 left-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center gap-3">
@@ -51,7 +51,7 @@
                     <a href="#inspiration" class="nav-link hover:text-brand transition">השראה</a>
                     <a href="#contact" class="nav-link hover:text-brand transition">צרו קשר</a>
                     <a href="#volunteer" class="nav-link bg-brand text-white px-4 py-2 rounded-full hover:bg-brand-dark transition">הצטרפו!</a>
-                    <a href="admin.html" class="nav-link text-gray-400 hover:text-gray-600 text-xs flex items-center gap-1 border border-gray-200 px-3 py-1.5 rounded-full hover:border-gray-400 transition">🔐 מאמנים</a>
+                    <a href="admin.html" class="nav-link text-gray-600 hover:text-gray-800 text-xs flex items-center gap-1 border border-gray-200 px-3 py-1.5 rounded-full hover:border-gray-400 transition">🔐 מאמנים</a>
                 </div>
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="פתח תפריט ניווט" aria-expanded="false" aria-controls="mobile-menu">
@@ -76,6 +76,7 @@
         </div>
     </nav>
 
+    <main id="main-wrapper">
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden" aria-label="דף הבית">
     <div id="main-content"></div>
@@ -139,7 +140,7 @@
     </section>
 
     <!-- Instagram Video Section -->
-    <section class="py-16 px-4 bg-white">
+    <section class="py-16 px-4 bg-white" aria-label="סרטון מהקהילה">
         <div class="max-w-2xl mx-auto text-center">
             <p class="text-sm font-bold text-brand uppercase tracking-widest mb-2">📸 רגע אחד מהקבוצה</p>
             <h2 class="text-3xl font-black text-gray-900 mb-8">ראו אותנו בפעולה</h2>
@@ -251,7 +252,7 @@
     </section>
 
     <!-- Photo Gallery Strip -->
-    <section class="py-4 bg-gray-100 overflow-hidden">
+    <section class="py-4 bg-gray-100 overflow-hidden" aria-label="גלריית תמונות מהקהילה">
         <div class="flex gap-4 animate-scroll">
             <img src="images/hands-together.jpeg" alt="ידיים ביחד" class="h-48 w-72 object-cover rounded-xl flex-shrink-0" style="image-orientation:from-image">
             <img src="images/crowd-event.jpeg" alt="אירוע" class="h-48 w-72 object-cover rounded-xl flex-shrink-0" style="image-orientation:from-image">
@@ -347,7 +348,7 @@
     </section>
 
     <!-- Why Etgarim Section -->
-    <section class="py-16 px-4 bg-white">
+    <section class="py-16 px-4 bg-white" aria-label="למה אתגרים כרמיאל-משגב">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-black text-gray-900 mb-3">למה אתגרים כרמיאל-משגב?</h2>
@@ -458,7 +459,7 @@
     </section>
 
     <!-- Races Section -->
-    <section class="py-16 px-4 bg-gray-900 text-white overflow-hidden">
+    <section class="py-16 px-4 bg-gray-900 text-white overflow-hidden" aria-label="המירוצים שלנו">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-black mb-3">המירוצים שלנו 🏅</h2>
@@ -588,10 +589,10 @@
                         </div>
                     </div>
                     <!-- Dots -->
-                    <div class="flex justify-center gap-2 mt-6" id="testimonial-dots" role="group" aria-label="ניווט בין ציטוטים">
-                        <button class="w-3 h-3 rounded-full bg-brand transition-all" data-slide="0" aria-label="ציטוט 1 מתוך 3" aria-pressed="true"></button>
-                        <button class="w-3 h-3 rounded-full bg-gray-300 transition-all" data-slide="1" aria-label="ציטוט 2 מתוך 3" aria-pressed="false"></button>
-                        <button class="w-3 h-3 rounded-full bg-gray-300 transition-all" data-slide="2" aria-label="ציטוט 3 מתוך 3" aria-pressed="false"></button>
+                    <div class="flex justify-center gap-1 mt-6" id="testimonial-dots" role="group" aria-label="ניווט בין ציטוטים">
+                        <button class="w-11 h-11 flex items-center justify-center" data-slide="0" aria-label="ציטוט 1 מתוך 3" aria-pressed="true"><span class="block w-3 h-3 rounded-full bg-brand transition-all"></span></button>
+                        <button class="w-11 h-11 flex items-center justify-center" data-slide="1" aria-label="ציטוט 2 מתוך 3" aria-pressed="false"><span class="block w-3 h-3 rounded-full bg-gray-300 transition-all"></span></button>
+                        <button class="w-11 h-11 flex items-center justify-center" data-slide="2" aria-label="ציטוט 3 מתוך 3" aria-pressed="false"><span class="block w-3 h-3 rounded-full bg-gray-300 transition-all"></span></button>
                     </div>
                 </div>
             </div>
@@ -676,6 +677,9 @@
                             </select>
                             </div>
                         </div>
+                        <p class="text-xs text-gray-500 mb-3 leading-relaxed">
+                            הפרטים ישמשו ליצירת קשר בלבד ולא יועברו לצד שלישי. בהתאם לחוק הגנת הפרטיות, תשמ"א-1981, תוכלו לבקש גישה, תיקון או מחיקה של המידע בפנייה לרועי.
+                        </p>
                         <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white py-3 rounded-xl font-bold transition-all text-sm">
                             שלחו פרטים 🚀
                         </button>
@@ -743,9 +747,11 @@
         </div>
     </section>
 
+    </main><!-- end #main-wrapper -->
+
     <!-- Footer -->
     <footer class="bg-gray-950 text-gray-500 py-8 px-4 text-center text-sm">
-        <p class="mb-2">אתגרים כרמיאל-משגב &copy; 2025 | כל הזכויות שמורות</p>
+        <p class="mb-2">אתגרים כרמיאל-משגב &copy; 2026 | כל הזכויות שמורות</p>
         <p class="text-gray-600">
             <a href="admin.html" class="hover:text-gray-400 transition">🔐 כניסת מאמנים</a>
         </p>

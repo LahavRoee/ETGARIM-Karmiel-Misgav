@@ -291,10 +291,13 @@ function initTestimonialsCarousel() {
         current = index;
         track.style.transform = `translateX(${index * 100}%)`;
         dots.forEach((d, i) => {
-            d.classList.toggle('bg-brand', i === index);
-            d.classList.toggle('bg-gray-300', i !== index);
-            d.classList.toggle('w-6', i === index);
-            d.classList.toggle('w-3', i !== index);
+            const span = d.querySelector('span');
+            if (span) {
+                span.classList.toggle('bg-brand', i === index);
+                span.classList.toggle('bg-gray-300', i !== index);
+                span.classList.toggle('w-6', i === index);
+                span.classList.toggle('w-3', i !== index);
+            }
             d.setAttribute('aria-pressed', i === index ? 'true' : 'false');
         });
     }
