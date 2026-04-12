@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הצהרת נגישות | אתגרים כרמיאל-משגב</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { heebo: ['Heebo', 'sans-serif'] },
+                    colors: {
+                        brand: { light: '#FFF7ED', DEFAULT: '#F97316', dark: '#C2410C' },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :focus-visible { outline: 3px solid #F97316; outline-offset: 3px; border-radius: 4px; }
+    </style>
+</head>
+<body class="font-heebo bg-white text-gray-800 min-h-screen">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:right-4 focus:z-[200] focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">
+        דלג לתוכן הראשי
+    </a>
+
+    <header class="bg-white shadow-sm py-4 px-6">
+        <div class="max-w-3xl mx-auto flex items-center gap-3">
+            <img src="images/logo.png.jpeg" alt="אתגרים" class="h-10 rounded-lg">
+            <span class="text-lg font-bold text-brand-dark">כרמיאל-משגב</span>
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-3xl mx-auto px-6 py-12">
+
+        <h1 class="text-3xl font-black text-gray-900 mb-2">הצהרת נגישות</h1>
+        <p class="text-gray-500 text-sm mb-8">עדכון אחרון: אפריל 2026</p>
+
+        <section class="prose prose-lg max-w-none space-y-6 text-gray-700 leading-relaxed">
+
+            <p>
+                עמותת <strong>אתגרים כרמיאל-משגב</strong> מחויבת להנגשת האתר לכלל המשתמשים, לרבות אנשים עם מוגבלויות, בהתאם לתקן הישראלי <strong>ת"י 5568</strong> ולהנחיות נגישות תכני אינטרנט <strong>WCAG 2.0</strong> ברמה AA.
+            </p>
+
+            <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">רמת הנגישות</h2>
+            <p>
+                האתר עומד ברמת התאמה <strong>AA</strong> לפי תקן WCAG 2.0 ות"י 5568. הונגשו, בין היתר, הפריטים הבאים:
+            </p>
+            <ul class="list-disc list-inside space-y-1 mr-4">
+                <li>כל הכפתורים והקישורים נגישים לניווט במקלדת</li>
+                <li>תוויות טקסט לכל שדות הטופס</li>
+                <li>טקסט חלופי לתמונות</li>
+                <li>ניגודיות צבעים מספקת בכל רכיבי הטקסט</li>
+                <li>קישור "דלג לתוכן" בראש כל עמוד</li>
+                <li>מבנה כותרות היררכי ותקני</li>
+                <li>תמיכה בקוראי מסך (NVDA, VoiceOver)</li>
+                <li>הגדרת שפה ו-RTL לדפדפן</li>
+                <li>אפשרות עצירת אנימציות למשתמשים הרגישים לתנועה</li>
+            </ul>
+
+            <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">מגבלות ידועות</h2>
+            <p>
+                אנו ממשיכים לשפר את נגישות האתר. ייתכן שחלק מהתכנים המוטמעים מגורמים חיצוניים (כגון מפות גוגל, פוסטי אינסטגרם) אינם עומדים בכל דרישות הנגישות. אנו פועלים לשיפור מתמיד.
+            </p>
+
+            <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">יצירת קשר בנושא נגישות</h2>
+            <p>
+                נתקלתם בבעיית נגישות? נשמח לשמוע ולטפל:
+            </p>
+            <ul class="space-y-2 mr-4">
+                <li>
+                    <strong>רועי להב</strong> — רכז נגישות
+                </li>
+                <li>
+                    וואצאפ:
+                    <a href="https://wa.me/972523818575"
+                       class="text-brand hover:text-brand-dark underline"
+                       target="_blank" rel="noopener">
+                        052-381-8575
+                    </a>
+                </li>
+            </ul>
+
+            <p class="text-sm text-gray-500 mt-8 border-t pt-6">
+                הצהרה זו עודכנה לאחרונה באפריל 2026 ומתייחסת לאתר
+                <a href="index.html" class="text-brand hover:underline">etgarimkarmielmisgav.github.io</a>.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-950 text-gray-500 py-6 px-4 text-center text-sm mt-16">
+        <p class="mb-2">אתגרים כרמיאל-משגב &copy; 2026</p>
+        <p>
+            <a href="index.html" class="hover:text-gray-400 transition underline">← חזרה לאתר הראשי</a>
+        </p>
+    </footer>
+
+</body>
+</html>
