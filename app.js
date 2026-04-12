@@ -171,34 +171,40 @@ function showDefaultStories(container) {
 
 function renderStories(container, stories) {
     container.innerHTML = stories.map(story => `
-        <div class="story-card group relative rounded-3xl overflow-hidden cursor-pointer"
-             style="aspect-ratio:4/3">
+        <article class="story-card group relative rounded-3xl overflow-hidden"
+                 style="aspect-ratio:4/3"
+                 aria-label="${story.text}">
             ${story.image ? `
-                <img src="${story.image}" alt=""
-                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                <img src="${story.image}" alt="" aria-hidden="true"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-focus-within:scale-110"
                      style="image-orientation:from-image">
             ` : ''}
             ${story.embedUrl ? `
-                <iframe src="${story.embedUrl}" class="absolute inset-0 w-full h-full border-0" allowfullscreen loading="lazy"></iframe>
+                <iframe src="${story.embedUrl}" title="${story.text}"
+                        class="absolute inset-0 w-full h-full border-0" allowfullscreen loading="lazy"></iframe>
             ` : ''}
-            <!-- Gradient overlay — always visible at bottom, full on hover -->
+            <!-- Gradient overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent
-                        transition-opacity duration-500 opacity-70 group-hover:opacity-100"></div>
-            <!-- Text slides up on hover -->
-            <div class="absolute inset-x-0 bottom-0 p-5 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                <p class="text-white text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mb-2">
+                        transition-opacity duration-500 opacity-70 group-hover:opacity-100 group-focus-within:opacity-100" aria-hidden="true"></div>
+            <!-- Text — visible on hover/focus, always readable by screen reader -->
+            <div class="absolute inset-x-0 bottom-0 p-5 translate-y-3 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-500 ease-out">
+                <p class="text-white text-sm leading-relaxed opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 delay-100 mb-2"
+                   aria-hidden="true">
                     ${story.text}
                 </p>
                 ${story.link ? `
                     <a href="${story.link}" target="_blank" rel="noopener"
-                       class="inline-flex items-center gap-1 text-orange-300 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150 hover:underline">
+                       aria-label="${story.text} — קראו עוד (נפתח בחלון חדש)"
+                       class="inline-flex items-center gap-1 text-orange-300 text-xs font-semibold opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 delay-150 hover:underline focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-300 focus-visible:rounded">
                         קראו עוד ←
                     </a>
                 ` : ''}
             </div>
+            <!-- Always-visible text for screen readers -->
+            <span class="sr-only">${story.text}</span>
             <!-- Orange dot indicator -->
-            <div class="absolute top-4 left-4 w-2.5 h-2.5 rounded-full bg-brand opacity-80"></div>
-        </div>
+            <div class="absolute top-4 left-4 w-2.5 h-2.5 rounded-full bg-brand opacity-80" aria-hidden="true"></div>
+        </article>
     `).join('');
 
     // Staggered entrance animation
