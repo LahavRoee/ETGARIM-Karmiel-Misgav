@@ -205,9 +205,18 @@ function renderCard(trainee, groupKey) {
     const initial = trainee.name.charAt(0);
     const badges = [];
     if (trainee.oneToOne) badges.push('<span class="badge warn">1:1</span>');
-    if (trainee.day) badges.push(`<span class="badge info">${trainee.day}</span>`);
     if (trainee.goal) badges.push('<span class="badge">🎯</span>');
     if (trainee.log && trainee.log.length) badges.push(`<span class="badge">${trainee.log.length} אימונים</span>`);
+
+    const DAY_OPTIONS = [
+        { value: 'שלישי',          label: 'שלישי' },
+        { value: 'רביעי',          label: 'רביעי' },
+        { value: 'שלישי+רביעי',   label: 'שניהם'  },
+    ];
+    const dayBtns = DAY_OPTIONS.map(d =>
+        `<button class="day-btn ${trainee.day === d.value ? 'active' : ''}"
+                 onclick="event.stopPropagation(); changeDay('${trainee.name}', '${d.value}')">${d.label}</button>`
+    ).join('');
 
     return `
         <div class="trainee-card" data-name="${trainee.name}">
@@ -216,11 +225,21 @@ function renderCard(trainee, groupKey) {
                 <div class="trainee-name">${trainee.name}</div>
                 <div class="trainee-meta">${trainee.kmMin}-${trainee.kmMax} ק"מ · ${trainee.pace || 'לא ידוע'}</div>
                 ${trainee.goal ? `<div class="trainee-goal-preview">🎯 ${trainee.goal}</div>` : ''}
+                <div class="day-selector">${dayBtns}</div>
             </div>
             <div class="trainee-badges">${badges.join('')}</div>
             <div class="trainee-arrow">&#8592;</div>
         </div>
     `;
+}
+
+async function changeDay(name, day) {
+    const trainee = TRAINEES.find(t => t.name === name);
+    if (!trainee) return;
+    trainee.day = day;
+    await saveTraineeField(name, { day });
+    renderGroups();
+    showSaved();
 }
 
 function setupTabs() {
