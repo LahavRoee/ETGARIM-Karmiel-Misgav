@@ -4,6 +4,16 @@
 
 let authToken = localStorage.getItem('etgarim_token') || '';
 
+// localStorage helpers for offline/GitHub Pages mode
+const LS = {
+    get: (key, fallback) => {
+        try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
+    },
+    set: (key, data) => {
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch {}
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
     initLogin();
@@ -138,29 +148,24 @@ let allStories = [];
 
 async function loadAllData() {
     try {
-        // Load TRAINEES from data.js (client-side)
         allTrainees = typeof TRAINEES !== 'undefined' ? [...TRAINEES] : [];
 
-        // Load server data
         const [serverData, volunteers, signups, stories] = await Promise.all([
-            apiFetch('/api/trainees').catch(() => ({})),
-            apiFetch('/api/volunteers').catch(() => []),
-            apiFetch('/api/signups').catch(() => []),
-            apiFetch('/api/admin/stories').catch(() => []),
+            apiFetch('/api/trainees').catch(() => null),
+            apiFetch('/api/volunteers').catch(() => null),
+            apiFetch('/api/signups').catch(() => null),
+            apiFetch('/api/admin/stories').catch(() => null),
         ]);
 
-        // Merge server data into trainees
-        if (serverData && typeof serverData === 'object') {
-            allTrainees.forEach(t => {
-                if (serverData[t.name]) {
-                    Object.assign(t, serverData[t.name]);
-                }
-            });
-        }
+        // Merge server overlay, fall back to localStorage
+        const overlay = (serverData && typeof serverData === 'object' && !serverData.error)
+            ? serverData
+            : LS.get('etgarim_trainees_overlay', {});
+        allTrainees.forEach(t => { if (overlay[t.name]) Object.assign(t, overlay[t.name]); });
 
-        allVolunteers = Array.isArray(volunteers) ? volunteers : [];
-        allSignups = Array.isArray(signups) ? signups : [];
-        allStories = Array.isArray(stories) ? stories : [];
+        allVolunteers = Array.isArray(volunteers) ? volunteers : LS.get('etgarim_volunteers', []);
+        allSignups = Array.isArray(signups) ? signups : LS.get('etgarim_signups', []);
+        allStories = Array.isArray(stories) ? stories : LS.get('etgarim_stories', []);
 
         updateDashboard();
         renderTrainees('all');
@@ -170,6 +175,43 @@ async function loadAllData() {
     } catch (e) {
         console.error('Load error:', e);
     }
+}
+
+async function saveTrainee(name, fields) {
+    await apiFetch('/api/trainee', { method: 'POST', body: JSON.stringify({ name, fields }) }).catch(() => null);
+    const overlay = LS.get('etgarim_trainees_overlay', {});
+    overlay[name] = { ...(overlay[name] || {}), ...fields };
+    LS.set('etgarim_trainees_overlay', overlay);
+}
+
+async function saveVolunteer(data) {
+    await apiFetch('/api/volunteer', { method: 'POST', body: JSON.stringify(data) }).catch(() => null);
+    const vols = LS.get('etgarim_volunteers', []);
+    if (data.id) {
+        const idx = vols.findIndex(v => v.id === data.id);
+        if (idx >= 0) vols[idx] = { ...vols[idx], ...data };
+        else vols.push(data);
+    } else {
+        data.id = Math.random().toString(36).slice(2, 10);
+        data.created = new Date().toISOString();
+        vols.push(data);
+    }
+    LS.set('etgarim_volunteers', vols);
+}
+
+async function saveStory(data) {
+    await apiFetch('/api/story', { method: 'POST', body: JSON.stringify(data) }).catch(() => null);
+    const stories = LS.get('etgarim_stories', []);
+    if (data.id) {
+        const idx = stories.findIndex(s => s.id === data.id);
+        if (idx >= 0) stories[idx] = { ...stories[idx], ...data };
+        else stories.unshift(data);
+    } else {
+        data.id = Math.random().toString(36).slice(2, 10);
+        data.created = new Date().toISOString();
+        stories.unshift(data);
+    }
+    LS.set('etgarim_stories', stories);
 }
 
 function updateDashboard() {
@@ -199,13 +241,17 @@ function renderTrainees(group) {
                 <div>
                     <div class="font-bold text-gray-900">${t.name}</div>
                     <div class="text-xs text-gray-500">
-                        ${t.day || ''} | ${t.pace || ''} | ${t.kmMin || '?'}-${t.kmMax || '?'} ק"מ
+                        ${t.pace || ''} | ${t.kmMin || '?'}-${t.kmMax || '?'} ק"מ
                         ${t.oneToOne ? ' | <span class="text-red-500 font-medium">1:1</span>' : ''}
                     </div>
                     ${t.notes ? `<div class="text-xs text-gray-400 mt-1">${t.notes}</div>` : ''}
                 </div>
             </div>
-            <div class="flex gap-2">
+            <div class="flex items-center gap-2">
+                <button onclick="cycleTrainingDay('${t.name}')" title="שנה יום אימון"
+                    class="text-xs px-2 py-1 rounded-lg border border-gray-200 hover:border-brand hover:text-brand transition font-medium whitespace-nowrap">
+                    📅 ${t.day || 'לא נקבע'}
+                </button>
                 <button onclick="showTraineeForm('${t.name}')" class="text-sm text-brand hover:underline">ערוך</button>
             </div>
         </div>
@@ -291,14 +337,19 @@ function showTraineeForm(editName) {
         data.kmMin = parseFloat(data.kmMin) || 0;
         data.kmMax = parseFloat(data.kmMax) || 0;
 
-        await apiFetch('/api/trainee', {
-            method: 'POST',
-            body: JSON.stringify({ name: data.name, fields: data })
-        });
-
+        await saveTrainee(data.name, data);
         closeModal();
         await loadAllData();
     });
+}
+
+async function cycleTrainingDay(name) {
+    const trainee = allTrainees.find(t => t.name === name);
+    if (!trainee) return;
+    const days = ['שלישי', 'רביעי', ''];
+    trainee.day = days[(days.indexOf(trainee.day || '') + 1) % days.length];
+    await saveTrainee(name, { day: trainee.day });
+    renderTrainees(document.querySelector('.trainee-filter.active')?.dataset.group || 'all');
 }
 
 // ── Volunteers ──────────────────────────────────────────────
@@ -360,7 +411,7 @@ function showVolunteerForm(editId) {
     document.getElementById('volunteer-form-admin').addEventListener('submit', async (e) => {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.target));
-        await apiFetch('/api/volunteer', { method: 'POST', body: JSON.stringify(data) });
+        await saveVolunteer(data);
         closeModal();
         await loadAllData();
     });
@@ -432,7 +483,7 @@ function showStoryForm(editId) {
         const fd = new FormData(e.target);
         const data = Object.fromEntries(fd);
         data.visible = fd.has('visible');
-        await apiFetch('/api/story', { method: 'POST', body: JSON.stringify(data) });
+        await saveStory(data);
         closeModal();
         await loadAllData();
     });
@@ -440,7 +491,9 @@ function showStoryForm(editId) {
 
 async function deleteStory(id) {
     if (!confirm('למחוק את הסיפור?')) return;
-    await apiFetch('/api/story/delete', { method: 'POST', body: JSON.stringify({ id }) });
+    await apiFetch('/api/story/delete', { method: 'POST', body: JSON.stringify({ id }) }).catch(() => null);
+    const stories = LS.get('etgarim_stories', []);
+    LS.set('etgarim_stories', stories.filter(s => s.id !== id));
     await loadAllData();
 }
 
