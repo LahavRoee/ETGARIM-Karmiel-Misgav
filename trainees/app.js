@@ -163,10 +163,10 @@ function renderStats() {
     const groups = ['A', 'B', 'C', 'D'].map(g => TRAINEES.filter(t => t.group === g).length);
     stats.innerHTML = `
         <span>סה"כ ${total} מתאמנים</span>
-        <span>🦅 ${groups[0]}</span>
-        <span>🐺 ${groups[1]}</span>
-        <span>🐬 ${groups[2]}</span>
-        <span>🐻 ${groups[3]}</span>
+        <span>🔴 ${groups[0]}</span>
+        <span>🟠 ${groups[1]}</span>
+        <span>🔵 ${groups[2]}</span>
+        <span>🟡 ${groups[3]}</span>
     `;
 }
 
@@ -552,7 +552,7 @@ function openAddTraineeModal() {
             <div class="data-grid">
                 <div class="data-field full-width"><label>שם *</label><input type="text" id="addName" placeholder="שם פרטי + אות שם משפחה (למשל: דני כ.)"></div>
                 <div class="data-field"><label>מין</label><select id="addGender"><option value="זכר">👨 זכר</option><option value="נקבה">👩 נקבה</option></select></div>
-                <div class="data-field"><label>קבוצה *</label><select id="addGroup"><option value="A">🦅 נשרים (A)</option><option value="B">🐺 זאבים (B)</option><option value="C">🐬 דולפינים (C)</option><option value="D" selected>🐻 דובים (D)</option></select></div>
+                <div class="data-field"><label>קבוצה *</label><select id="addGroup"><option value="A">🔴 אדום (A)</option><option value="B">🟠 כתום (B)</option><option value="C">🔵 כחול (C)</option><option value="D" selected>🟡 צהוב (D)</option></select></div>
                 <div class="data-field"><label>יום אימון</label><select id="addDay"><option value="">לא קבוע</option><option value="שלישי">שלישי</option><option value="רביעי">רביעי</option><option value="שלישי+רביעי">שלישי+רביעי</option></select></div>
                 <div class="data-field"><label>קצב (דק'/ק"מ)</label><input type="text" id="addPace" placeholder="למשל: 07:00-09:00"></div>
                 <div class="data-field"><label>מרחק מינימום (ק"מ)</label><input type="number" id="addKmMin" step="0.5" value="0" min="0"></div>
