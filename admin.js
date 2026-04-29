@@ -231,7 +231,7 @@ function renderTrainees(group) {
     const list = document.getElementById('trainees-list');
     let filtered = group === 'all' ? allTrainees : allTrainees.filter(t => t.group === group);
 
-    const groupEmoji = { A: '🦅', B: '🐺', C: '🐬', D: '🐻' };
+    const groupEmoji = { A: '🔴', B: '🟠', C: '🔵', D: '🟡' };
     const groupColor = { A: 'red', B: 'orange', C: 'blue', D: 'yellow' };
 
     list.innerHTML = filtered.map(t => `
@@ -291,10 +291,10 @@ function showTraineeForm(editName) {
                 <div>
                     <label class="text-sm font-medium text-gray-700">קבוצה</label>
                     <select name="group" class="w-full px-3 py-2 rounded-lg border text-sm">
-                        <option value="A" ${trainee?.group === 'A' ? 'selected' : ''}>🦅 נשרים (A)</option>
-                        <option value="B" ${trainee?.group === 'B' ? 'selected' : ''}>🐺 זאבים (B)</option>
-                        <option value="C" ${trainee?.group === 'C' ? 'selected' : ''}>🐬 דולפינים (C)</option>
-                        <option value="D" ${trainee?.group === 'D' ? 'selected' : ''}>🐻 דובים (D)</option>
+                        <option value="A" ${trainee?.group === 'A' ? 'selected' : ''}>🔴 אדום</option>
+                        <option value="B" ${trainee?.group === 'B' ? 'selected' : ''}>🟠 כתום</option>
+                        <option value="C" ${trainee?.group === 'C' ? 'selected' : ''}>🔵 כחול</option>
+                        <option value="D" ${trainee?.group === 'D' ? 'selected' : ''}>🟡 צהוב</option>
                     </select>
                 </div>
             </div>
@@ -393,7 +393,7 @@ function showVolunteerForm(editId) {
                     </select>
                 </div>
                 <div>
-                    <label class="text-sm font-medium text-gray-700">רמה</label>
+                    <label class="text-sm font-medium text-gray-700">קבוצה</label>
                     <input name="experience" value="${vol?.experience || ''}" class="w-full px-3 py-2 rounded-lg border text-sm" placeholder="רץ/הולך">
                 </div>
             </div>
