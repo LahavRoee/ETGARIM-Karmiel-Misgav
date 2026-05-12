@@ -70,7 +70,7 @@ const TRAINEES = [
     { name: 'אריאל ב.', gender: 'זכר', day: 'שלישי', pace: '06:00-07:00', kmMin: 3.5, kmMax: 6, group: 'B', notes: 'חייב כזוג, לא בשלישייה', goal: '', oneToOne: false },
     { name: 'שי', gender: 'זכר', day: 'שלישי', pace: '06:30-08:00', kmMin: 4, kmMax: 6, group: 'B', notes: 'רץ לאט', goal: '', oneToOne: false },
     { name: 'סופי', gender: 'נקבה', day: 'שלישי', pace: '10:00+', kmMin: 3, kmMax: 5, group: 'B', notes: 'נדרש 1:1', goal: '', oneToOne: true },
-    { name: 'שקד', gender: 'זכר', day: 'שלישי', pace: '05:30-07:00', kmMin: 4, kmMax: 6, group: 'B', notes: 'מתאים להרבה מתנדבים', goal: '', oneToOne: false },
+    { name: 'שקד', gender: 'זכר', day: 'שלישי', pace: '05:30-07:00', kmMin: 4, kmMax: 6, group: 'B', notes: 'רץ מהיר — לשבץ עם מתנדב מהיר (שמואל/אלכס ינאי/אלון), עדיף 1:1', goal: '', oneToOne: false },
     { name: 'אליזבטה', gender: 'נקבה', day: '', pace: '', kmMin: 0, kmMax: 0, group: 'B', notes: 'חדשה - לעדכן', goal: '', oneToOne: false },
     { name: 'כפיר', gender: 'זכר', day: 'שלישי', pace: '06:00-07:30', kmMin: 4, kmMax: 6, group: 'B', notes: 'רץ בינוני-מהיר', goal: '', oneToOne: false },
     { name: 'אורן', gender: 'זכר', day: 'שלישי', pace: '06:00-08:00', kmMin: 4, kmMax: 6, group: 'B', notes: 'רץ-הולך, קצב בינוני', goal: '', oneToOne: false },
@@ -92,4 +92,22 @@ const TRAINEES = [
     { name: 'בועז', gender: 'זכר', day: 'רביעי', pace: '11:00+', kmMin: 1.5, kmMax: 3, group: 'D', notes: 'הולך, טווח קצר', goal: '', oneToOne: false },
     { name: 'מעיין', gender: 'נקבה', day: 'רביעי', pace: '12:00+', kmMin: 1.5, kmMax: 3, group: 'D', notes: 'נדרש 1:1, דגש מתנדבת אישה, לא בשלישייה', goal: '', oneToOne: true },
     { name: 'לאה', gender: 'נקבה', day: 'רביעי', pace: '09:00-11:00', kmMin: 2, kmMax: 4, group: 'D', notes: 'הולכת', goal: '', oneToOne: false },
+];
+
+// מתנדבים — Volunteers
+// gender: זכר / נקבה | fast: true = מתנדב מהיר | day: יום פעיל
+const VOLUNTEERS = [
+    // 🏃 שלישי — כרמיאל (גילת מאמנת / רועי מחליף)
+    { name: 'יואב ארבל',          gender: 'זכר',   day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: '' },
+    { name: 'אלכס ינאי',          gender: 'זכר',   day: 'שלישי', kmMin: 5, kmMax: 10, fast: true,  notes: 'מתנדב מהיר' },
+    { name: 'גיל',                gender: 'זכר',   day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: '' },
+    { name: 'רום שינשין',         gender: '',      day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: '' },
+    { name: 'עידית לוי בנג\'מין', gender: 'נקבה', day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: 'שם: עידית (לא אידית!)' },
+    { name: 'ניסן טל',            gender: 'זכר',   day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: 'הולך בלבד, לא רץ' },
+    { name: 'אמיר',               gender: 'זכר',   day: 'שלישי', kmMin: 3, kmMax: 5,  fast: false, notes: 'מתנדב חדש (מאי 2026)' },
+    { name: 'רני',                gender: 'זכר',   day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: '' },
+    { name: 'שמואל',              gender: 'זכר',   day: 'שלישי', kmMin: 5, kmMax: 10, fast: true,  notes: 'מתנדב מהיר' },
+    { name: 'תמי ניב אלון',       gender: 'נקבה', day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: 'שיבוץ קבוע עם טופול (חודשי)' },
+    { name: 'אייל',               gender: 'זכר',   day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: 'Xorcom.support | +972-4-995-1992' },
+    { name: 'אלון',               gender: 'זכר',   day: '',      kmMin: 5, kmMax: 10, fast: true,  notes: 'מתנדב מהיר' },
 ];
