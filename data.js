@@ -80,7 +80,7 @@ const TRAINEES = [
     { name: 'ריקי', gender: 'נקבה', day: 'רביעי', pace: '09:00-12:00', kmMin: 2, kmMax: 5, group: 'C', notes: 'הולכת', goal: '', oneToOne: false },
     { name: 'דודו', gender: 'זכר', day: 'רביעי', pace: '09:00-12:00', kmMin: 2, kmMax: 5, group: 'C', notes: 'הולך', goal: '', oneToOne: false },
     { name: 'אלעד ש.', gender: 'זכר', day: 'שלישי', pace: '07:00-09:00', kmMin: 3, kmMax: 5, group: 'C', notes: 'רץ-הולך', goal: '', oneToOne: false },
-    { name: 'איתן', gender: 'זכר', day: 'רביעי', pace: '06:00-08:00', kmMin: 4, kmMax: 6, group: 'C', notes: 'הולך-רץ', goal: '', oneToOne: false },
+    { name: 'איתן', gender: 'זכר', day: 'רביעי', pace: '06:00-08:00', kmMin: 4, kmMax: 6, group: 'C', notes: 'חייב 1:1 — עדיף: עמית רובין, קרלי, אלון, אופיר אמיתי', goal: '', oneToOne: true },
     { name: 'טופול', gender: 'נקבה', day: 'שלישי', pace: '10:00+', kmMin: 3, kmMax: 4, group: 'C', notes: 'נדרש 1:1, שיבוץ תמי חודשי', goal: '', oneToOne: true },
     { name: 'זוהר', gender: 'נקבה', day: 'שלישי', pace: '08:00-10:00', kmMin: 3.5, kmMax: 5, group: 'C', notes: 'הולכת מהר', goal: '', oneToOne: false },
 
@@ -92,6 +92,7 @@ const TRAINEES = [
     { name: 'בועז', gender: 'זכר', day: 'רביעי', pace: '11:00+', kmMin: 1.5, kmMax: 3, group: 'D', notes: 'הולך, טווח קצר', goal: '', oneToOne: false },
     { name: 'מעיין', gender: 'נקבה', day: 'רביעי', pace: '12:00+', kmMin: 1.5, kmMax: 3, group: 'D', notes: 'נדרש 1:1, דגש מתנדבת אישה, לא בשלישייה', goal: '', oneToOne: true },
     { name: 'לאה', gender: 'נקבה', day: 'רביעי', pace: '09:00-11:00', kmMin: 2, kmMax: 4, group: 'D', notes: 'הולכת', goal: '', oneToOne: false },
+    { name: 'עמית רובין', gender: 'זכר', day: 'רביעי', pace: '06:00-09:00', kmMin: 2, kmMax: 10, group: 'B', notes: 'רץ, טווח רחב 2-10 ק"מ', goal: '', oneToOne: false },
 ];
 
 // מתנדבים — Volunteers
@@ -110,4 +111,5 @@ const VOLUNTEERS = [
     { name: 'תמי ניב אלון',       gender: 'נקבה', day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: 'שיבוץ קבוע עם טופול (חודשי)' },
     { name: 'אייל',               gender: 'זכר',   day: 'שלישי', kmMin: 0, kmMax: 0,  fast: false, notes: 'Xorcom.support | +972-4-995-1992' },
     { name: 'אלון',               gender: 'זכר',   day: '',      kmMin: 5, kmMax: 10, fast: true,  notes: 'מתנדב מהיר' },
+    { name: 'רחל רודי',            gender: 'נקבה', day: 'רביעי', kmMin: 1, kmMax: 5,  fast: false, notes: 'הולכת בלבד, 1-5 ק"מ' },
 ];
