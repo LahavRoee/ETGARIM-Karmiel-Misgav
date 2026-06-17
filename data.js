@@ -113,4 +113,5 @@ const VOLUNTEERS = [
     { name: 'אלון',               gender: 'זכר',   day: '',      kmMin: 5, kmMax: 10, fast: true,  notes: 'מתנדב מהיר' },
     { name: 'רחל רודי',            gender: 'נקבה', day: 'רביעי', kmMin: 1, kmMax: 5,  fast: false, notes: 'הולכת בלבד, 1-5 ק"מ' },
     { name: 'לודמילה (לודה)',      gender: 'נקבה', day: 'רביעי', kmMin: 2, kmMax: 5,  fast: false, notes: 'הולכת 2-5 ק"מ' },
+    { name: 'יצחק',                gender: 'זכר',   day: 'רביעי', kmMin: 0, kmMax: 0,  fast: false, notes: 'מתנדב חדש (17/06/2026)' },
 ];
