@@ -117,7 +117,7 @@ function initScrollAnimations() {
                 observer.unobserve(entry.target); // Only animate once
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
 
     document.querySelectorAll('.fade-up, .fade-right, .fade-left, .scale-in, .stagger-children').forEach(el => {
         observer.observe(el);
@@ -129,18 +129,19 @@ async function loadStories() {
     const container = document.getElementById('stories-container');
     if (!container) return;
 
+    // GitHub Pages has no backend — skip the fetch entirely to avoid console 404
+    if (window.location.hostname.includes('github.io') || window.location.protocol === 'file:') {
+        showDefaultStories(container);
+        return;
+    }
+
     try {
         const res = await fetch('/api/stories');
+        if (!res.ok) { showDefaultStories(container); return; }
         const stories = await res.json();
-
-        if (!stories || stories.length === 0) {
-            showDefaultStories(container);
-            return;
-        }
-
+        if (!stories || stories.length === 0) { showDefaultStories(container); return; }
         renderStories(container, stories);
     } catch (e) {
-        // Server not available, show defaults
         showDefaultStories(container);
     }
 }
@@ -254,9 +255,13 @@ function initVolunteerForm() {
         btn.disabled = true;
 
         try {
-            // Combine first + last name into a single 'name' field for the server
             if (data.firstName || data.lastName) {
                 data.name = [data.firstName, data.lastName].filter(Boolean).join(' ');
+            }
+
+            // On GitHub Pages there is no backend — open WhatsApp directly with the form data
+            if (window.location.hostname.includes('github.io') || window.location.protocol === 'file:') {
+                throw new Error('no-backend');
             }
 
             const res = await fetch('/api/volunteer-signup', {
@@ -273,7 +278,16 @@ function initVolunteerForm() {
                 throw new Error('Server error');
             }
         } catch (err) {
-            // No backend available (e.g. GitHub Pages) — show WhatsApp links directly
+            // No backend — open WhatsApp with pre-filled message so no data is lost
+            const name = [data.firstName, data.lastName].filter(Boolean).join(' ') || '';
+            const phone = data.phone || '';
+            const avail = data.availability || '';
+            const msg = encodeURIComponent(
+                `היי רועי, אני מעוניין/ת להתנדב באתגרים כרמיאל-משגב 🧡\n` +
+                `שם: ${name}\nטלפון: ${phone}${avail ? `\nזמינות: ${avail}` : ''}`
+            );
+            window.open(`https://wa.me/972523818575?text=${msg}`, '_blank', 'noopener');
+            successDiv.textContent = '🎉 פותחים וואצאפ עם הפרטים שלך — פשוט שלחו את ההודעה!';
             successDiv.classList.remove('hidden');
             form.reset();
             successDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

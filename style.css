@@ -13,8 +13,8 @@ body {
 /* Scroll-triggered animations */
 .fade-up {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .fade-up.visible {
     opacity: 1;
@@ -23,8 +23,8 @@ body {
 
 .fade-right {
     opacity: 0;
-    transform: translateX(-40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateX(-24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .fade-right.visible {
     opacity: 1;
@@ -33,8 +33,8 @@ body {
 
 .fade-left {
     opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateX(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .fade-left.visible {
     opacity: 1;
@@ -43,8 +43,8 @@ body {
 
 .scale-in {
     opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .scale-in.visible {
     opacity: 1;
@@ -65,7 +65,7 @@ body {
 /* Photo gallery infinite scroll */
 @keyframes scroll-left {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(50%); }
 }
 
 .animate-scroll {
